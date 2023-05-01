@@ -3,7 +3,7 @@ package com.example.apijavaspring.controller;
 import com.example.apijavaspring.dto.request.PersonRequestDTO;
 import com.example.apijavaspring.dto.response.PersonResponseDTO;
 import com.example.apijavaspring.service.PersonService;
-import org.apache.coyote.Response;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -13,9 +13,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/people")
+@RequiredArgsConstructor
 public class PersonController {
 
-  private PersonService personService;
+  private final PersonService personService;
   @GetMapping(value = "/{id}")
   public ResponseEntity<PersonResponseDTO> findById(@PathVariable(name = "id") Long id) {
 
